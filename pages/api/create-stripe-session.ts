@@ -6,7 +6,9 @@ async function CreateStripeSession(req: NextApiRequest, res: NextApiResponse) {
   const { items } = req.body;
 
   const redirectURL =
-    process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : 'https://next-sports-and-camp-jpova6hfi-nguyaniv.vercel.app/';
 
   const transformedItems = await items.map((item: product) => {
     return {
