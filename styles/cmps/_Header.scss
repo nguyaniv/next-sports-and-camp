@@ -1,0 +1,48 @@
+.header {
+  position: relative;
+  height: 538px;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__heading {
+    color: #fff;
+    z-index: 2;
+    position: relative;
+    text-align: center;
+    font-size: 4rem;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    animation: 3.5s fadeIn 0.5s backwards;
+    span {
+      display: block;
+    }
+  }
+}
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.6;
+  overflow: hidden;
+
+  &__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(3px);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

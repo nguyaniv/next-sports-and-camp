@@ -1,0 +1,282 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  top: -10rem;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 120em;
+  background-color: #fff;
+  position: fixed;
+  margin: 0 auto;
+  z-index: 100;
+  border-bottom: 1px solid $color-primary;
+  @include respond(tab-port) {
+    width: 100%;
+    top: -11rem;
+  }
+  &__actions {
+    height: 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(139, 139, 139);
+    flex-wrap: wrap;
+    @include respond(tab-port) {
+      height: 10rem;
+    }
+    @include respond(phone) {
+      border-bottom: none;
+      align-items: center;
+      height: 10rem;
+    }
+
+    & > * {
+      margin-top: 1rem;
+    }
+    @include respond(tab-port) {
+      // height: 7rem;
+    }
+  }
+
+  &__logo {
+    margin-left: 6rem;
+    @include respond(phone) {
+      width: 15%;
+    }
+    display: flex;
+    align-items: flex-end;
+  }
+  &__menu {
+    height: 100%;
+    cursor: pointer;
+    display: none;
+  }
+
+  &__btn {
+    align-self: center;
+    justify-self: center;
+    width: 4rem;
+    height: 0.4rem;
+    display: none;
+    background-color: rgb(0, 0, 0);
+    border: none;
+    position: relative;
+    cursor: pointer;
+    @include respond(tab-port) {
+      display: flex;
+      &::before,
+      &::after {
+        content: "";
+        display: inline-block;
+        width: 4rem;
+        width: 4rem;
+        height: 0.4rem;
+        position: absolute;
+        background-color: rgb(0, 0, 0);
+      }
+
+      &::before {
+        top: 1rem;
+        background-color: rgb(0, 0, 0);
+      }
+      &::after {
+        top: -1rem;
+      }
+    }
+  }
+
+  &__user {
+    width: 15%;
+    height: 100%;
+    color: $color-dark-light;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    justify-content: space-around;
+    position: relative;
+    cursor: pointer;
+
+    &__login {
+      font-size: 2rem;
+      background-color: rgb(80, 115, 190);
+      padding: 1.2rem;
+      color: #fff;
+    }
+
+    @include respond(tab-port) {
+      width: 20%;
+    }
+    @include respond(phone) {
+      width: 40%;
+    }
+
+    &__dropdown {
+      width: 100%;
+      height: 50%;
+      position: absolute;
+      top: 20%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      span {
+        border-radius: 50%;
+        font-size: 1.5rem;
+      }
+      &__image {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        left: -1rem;
+        width: 4rem;
+        @include respond(phone) {
+          left: 0;
+          top: 1rem;
+          width: 4rem;
+        }
+      }
+
+      &:hover &--menu,
+      &:visited &--menu {
+        width: 100%;
+        height: fit-content;
+        border: 1px solid rgb(192, 191, 191);
+        border-radius: 0.5rem;
+      }
+      &--menu {
+        position: absolute;
+        background-color: #fff;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        z-index: 1000;
+        // border-radius: 1rem;
+        top: 4rem;
+        right: 1rem;
+        transition: all 0.3s;
+        ul {
+          list-style: none;
+          font-size: 2rem;
+          li {
+            padding: 1rem;
+            transition: all 0.3s;
+            text-align: center;
+
+            &:hover {
+              background-color: rgb(25, 118, 210);
+              color: #fff;
+            }
+          }
+          li:not(:last-child) {
+            border-bottom: 1px solid #d6d5d5;
+          }
+        }
+      }
+    }
+  }
+
+  &__search {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0;
+    position: relative;
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
+    input {
+      width: 30%;
+      height: 3rem;
+      transition: all 0.3s;
+      border-radius: 0.8rem;
+      padding: 1rem;
+      outline: rgb(114, 151, 119);
+      border: 3px solid rgb(114, 151, 119);
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+        sans-serif;
+
+      @include respond(tab-port) {
+        width: 70%;
+      }
+    }
+    &:hover input {
+      @include respond(tab-port) {
+        width: 80%;
+      }
+    }
+    svg {
+      width: 2rem;
+      display: inline-block;
+      // transform: translateX(-3rem);
+      color: rgb(114, 151, 119);
+      cursor: pointer;
+      user-select: none;
+      position: absolute;
+      right: 40%;
+      top: 15%;
+
+      outline: none !important;
+      -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+      @include respond(phone) {
+        right: 20%;
+        top: 15%;
+      }
+    }
+  }
+
+  &__links {
+    height: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px solid rgb(139, 139, 139);
+    @include respond(phone) {
+      border: none;
+    }
+    font-size: 2rem;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+      sans-serif;
+  }
+
+  &__link {
+    padding: 0.1rem 3rem;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid $color-primary;
+    span {
+      display: inline-block;
+      z-index: 10;
+      position: relative;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      height: 100%;
+      background-color: $color-primary;
+      width: 1%;
+      transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transform-origin: bottom;
+      display: inline-block;
+    }
+    &:hover,
+    &:focus {
+      span {
+        color: #fff;
+      }
+      &::before {
+        top: 0%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

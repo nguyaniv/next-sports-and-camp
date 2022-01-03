@@ -1,0 +1,207 @@
+.store {
+  display: grid;
+  grid-template-rows: 10rem repeat(7, 1fr);
+
+  &__heading__filter {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    font-size: 2rem;
+    align-items: center;
+    text-align: center;
+    button {
+      background-color: #fff;
+      border: none;
+      padding: 1rem;
+      cursor: pointer;
+      color: gray;
+      position: relative;
+      svg {
+        height: 2rem;
+      }
+    }
+
+    .speech-bubble {
+      position: absolute;
+      background: #ffffff;
+      border-radius: 0.4em;
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+      width: 15rem;
+      top: -1rem;
+      left: 5.3rem;
+      border: 1px solid black;
+      box-shadow: 0 0.2rem 7px;
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      justify-content: space-around;
+      background-color: #fff;
+      transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+      padding-bottom: 1rem;
+      padding: 1.5rem;
+
+      z-index: 50;
+      &.active {
+        height: 17rem;
+        width: 17rem;
+        display: flex;
+        visibility: visible;
+        opacity: 1;
+      }
+      li {
+        border: 1px solid gainsboro;
+        padding: 1rem 0;
+        border-radius: 0.2rem;
+        transition: all 0.2s;
+        background-color: rgb(44, 133, 235);
+        color: #fff;
+        margin: 0.4rem 1rem;
+        border-radius: 1rem;
+        &:hover {
+          background-color: rgb(39, 105, 180);
+          color: #fff;
+        }
+      }
+    }
+
+    .speech-bubble:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 20%;
+      width: 0;
+      height: 0;
+      border: 2rem solid transparent;
+      border-right-color: #606768;
+      border-left: 0;
+      border-bottom: 0;
+      margin-top: -2rem;
+      margin-left: -2rem;
+    }
+    &--head {
+      grid-column: 1/3;
+      text-align: start;
+      margin-left: 1rem;
+    }
+    &--links {
+      list-style: none;
+      display: grid;
+      grid-auto-flow: column;
+      grid-column: 3/5;
+      font-size: 2.5rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+
+      @include respond(phone) {
+        margin-right: 1rem;
+        font-size: 1.9rem;
+      }
+    }
+    &--link {
+      transition: transform 0.2s;
+      cursor: pointer;
+      &:hover {
+        transform: translateY(-3px);
+        color: $color-primary;
+      }
+      &-active {
+        transform: translateY(-3px);
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__products {
+    grid-row: 2/-1;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 2rem;
+    margin: 0 1rem;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @include respond(tab-port-min) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include respond(phone) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1.5rem;
+      padding: 2rem;
+    }
+  }
+
+  &__product {
+    height: 350px;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    position: relative;
+    text-align: center;
+    align-items: center;
+    justify-content: stretch;
+    justify-items: center;
+    border: 1px solid $color-secondary-dark;
+    border-radius: 1.9rem;
+    overflow: hidden;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+    @include respond(phone) {
+      height: 300px;
+    }
+    h6 {
+      color: rgb(82, 80, 80);
+      justify-self: start;
+      margin-left: 1rem;
+      font-size: 1.2rem;
+    }
+    &--name {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+    &--action {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      span {
+        font-size: 1.7rem;
+        color: $color-primary;
+        font-weight: 600;
+      }
+
+      button {
+        position: relative;
+        display: inline-block;
+        padding: 6px 20px 6px 20px;
+        border-radius: 4px;
+        background-color: #def9ec;
+        font-size: 14px;
+        font-weight: 700;
+        color: $color-primary;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        &:hover {
+          background-color: $color-primary;
+          color: #fff;
+        }
+      }
+    }
+    .badge {
+      display: inline-block;
+      justify-self: start;
+      position: relative;
+      font-size: 1.2rem;
+      border-radius: 15px 0 20px 0;
+      color: #fff;
+      padding: 9px 20px 10px 20px;
+      background-color: #67bcee;
+      width: 2rem;
+      height: 1rem;
+      align-self: start;
+      transform: translateY(-3px);
+    }
+  }
+}
