@@ -1,0 +1,44 @@
+.orders {
+  &__item__details {
+    overflow: hidden;
+    height: 0;
+    transition: all 0.3s;
+  }
+  &__item {
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    height: 1rem;
+    text-align: center;
+    width: fit-content;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+      sans-serif;
+
+    &:not(:last-child) {
+      margin-bottom: 5rem;
+    }
+    &:hover,
+    &:focus {
+      min-height: 20rem;
+      .orders__item__details {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        &--products {
+          display: flex;
+          flex-direction: column;
+
+          div {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgb(235, 233, 233);
+          }
+        }
+      }
+    }
+  }
+}

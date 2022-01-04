@@ -20,12 +20,7 @@ export async function connectToDatabase() {
       db: cachedDb,
     };
   }
-
   // set the connection options
-  const opts = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  };
 
   // Connect to cluster
   let client = new MongoClient(MONGODB_URI!);

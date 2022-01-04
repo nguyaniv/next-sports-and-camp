@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: -3rem;
+  top: -3.2rem;
   margin: 0 auto;
   left: 50%;
   transform: translate(-50%, 50%);
@@ -14,10 +14,9 @@
   @include respond(tab-port) {
     width: 100%;
     // top: 0;
-  }
-  @include respond(tab-port) {
     top: -3.1rem;
   }
+
   &__actions {
     height: 100%;
     display: flex;
@@ -31,7 +30,6 @@
     }
     @include respond(phone) {
       border-bottom: none;
-      align-items: center;
       height: 12rem;
     }
     @include respond(tab-port) {
@@ -45,6 +43,7 @@
     width: 4rem;
     height: 100%;
     display: block;
+    cursor: pointer;
     @include respond(phone) {
       width: 4rem;
       height: 4rem;

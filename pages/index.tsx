@@ -1,8 +1,7 @@
-import type { InferGetStaticPropsType, NextPage } from 'next';
+import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Cart from '../cmps/Cart/Cart';
 import CheckOut from '../cmps/CheckOut/CheckOut';
 import Header from '../cmps/Header/Header';
@@ -11,14 +10,16 @@ import { onGetItems } from '../features/cart/cartSlice';
 import { removeAllItems } from '../utills/utills';
 import { useAppDispatch } from '../app/hooks';
 import Footer from '../cmps/Footer/Footer';
+import PaymentModal from '../cmps/OrdersModal/PaymentModal';
 const Home: NextPage = ({ products }: any) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-
+  const [ordersModal, setOrdersModal] = useState(false);
   const checkStatus = async () => {
     if (router.query.status && router.query.status === 'success') {
       await removeAllItems();
       await dispatch(onGetItems);
+      setOrdersModal(true);
     }
   };
 
@@ -39,6 +40,7 @@ const Home: NextPage = ({ products }: any) => {
         <Store products={products} />
         <Cart />
         <CheckOut />
+        {/* <PaymentModal /> */}
       </main>
       <Footer />
     </div>

@@ -4,6 +4,7 @@ import { onChangeModal } from '../../features/cart/cartSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const CheckOut = () => {
   const modal = useAppSelector((state) => state.cart.checkoutModal);
@@ -11,6 +12,8 @@ const CheckOut = () => {
   const [isModal, setisModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
+  const { user, error, isLoading } = useUser();
+
   useEffect(() => {
     setisModal(modal);
   }, [modal]);
@@ -23,6 +26,7 @@ const CheckOut = () => {
     const stripe = await stripePromise;
     const checkoutSession = await axios.post('/api/create-stripe-session', {
       items: items,
+      user: user?.email || null,
     });
     const result = await stripe!.redirectToCheckout({
       sessionId: checkoutSession.data.id,

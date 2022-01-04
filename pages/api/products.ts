@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { connectToDatabase } from '../../utills/mongodb';
-const ObjectId = require('mongodb').ObjectId;
 
 export default async function handler(
   req: NextApiRequest,

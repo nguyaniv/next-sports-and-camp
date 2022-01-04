@@ -5,18 +5,18 @@ import { useRef } from 'react';
 const Navbar = () => {
   const { user, error, isLoading } = useUser();
 
-  const footerRef = useRef();
-
   return (
     <div className="navbar">
       <div className=" navbar__actions">
         <div className=" navbar__logo">
-          <Image
-            layout="responsive"
-            width={50}
-            height={50}
-            src={'/img/logo.png'}
-          />
+          <Link href={'/'}>
+            <Image
+              layout="responsive"
+              width={50}
+              height={50}
+              src={'/img/logo.png'}
+            />
+          </Link>
         </div>
         <div className=" navbar__user">
           {!user ? (
@@ -38,7 +38,10 @@ const Navbar = () => {
                 <span>Hello {user.nickname}</span>
                 <div className="navbar__user__dropdown--menu">
                   <ul>
-                    <li>Orders</li>
+                    <li>
+                      {' '}
+                      <Link href={'/orders'}>Orders</Link>{' '}
+                    </li>
                     <li>
                       {' '}
                       <a href="/api/auth/logout">Logout</a>
@@ -50,26 +53,6 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      {/* <nav className=" navbar__links">
-        <Link href={'#'}>
-          <a className="navbar__link">
-            {' '}
-            <span>Home</span>{' '}
-          </a>
-        </Link>
-        <Link href={'#'}>
-          <a className="navbar__link">
-            {' '}
-            <span>About</span>{' '}
-          </a>
-        </Link>
-        <Link href={'#footer'}>
-          <a className="navbar__link">
-            {' '}
-            <span>Contact us</span>{' '}
-          </a>
-        </Link>
-      </nav> */}
     </div>
   );
 };
