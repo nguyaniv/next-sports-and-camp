@@ -1,17 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
+import { useRef } from 'react';
 const Navbar = () => {
   const { user, error, isLoading } = useUser();
+
+  const footerRef = useRef();
 
   return (
     <div className="navbar">
       <div className=" navbar__actions">
         <div className=" navbar__logo">
           <Image
-            objectFit="contain"
-            width="128px"
-            height="81px"
+            layout="responsive"
+            width={50}
+            height={50}
             src={'/img/logo.png'}
           />
         </div>
@@ -47,7 +50,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      <nav className=" navbar__links">
+      {/* <nav className=" navbar__links">
         <Link href={'#'}>
           <a className="navbar__link">
             {' '}
@@ -60,13 +63,13 @@ const Navbar = () => {
             <span>About</span>{' '}
           </a>
         </Link>
-        <Link href={'#'}>
+        <Link href={'#footer'}>
           <a className="navbar__link">
             {' '}
             <span>Contact us</span>{' '}
           </a>
         </Link>
-      </nav>
+      </nav> */}
     </div>
   );
 };

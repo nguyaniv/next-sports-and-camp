@@ -10,6 +10,7 @@ import Store from '../cmps/Store/Store';
 import { onGetItems } from '../features/cart/cartSlice';
 import { removeAllItems } from '../utills/utills';
 import { useAppDispatch } from '../app/hooks';
+import Footer from '../cmps/Footer/Footer';
 const Home: NextPage = ({ products }: any) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -39,7 +40,7 @@ const Home: NextPage = ({ products }: any) => {
         <Cart />
         <CheckOut />
       </main>
-      <footer></footer>
+      <Footer />
     </div>
   );
 };
