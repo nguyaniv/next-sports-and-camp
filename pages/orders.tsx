@@ -1,6 +1,7 @@
 import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 import Order from '../cmps/Order/Order';
 import { orderModel } from '../models/order';
+import { fetchOrders } from '../utills/fetch-orders';
 const orders = ({ orders }: any) => {
   console.log(orders);
 
@@ -28,20 +29,10 @@ const orders = ({ orders }: any) => {
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(ctx) {
-    let dev = process.env.NODE_ENV !== 'production';
-    let { DEV_URL, PROD_URL } = process.env;
-
     // access the user session
     const session = await getSession(ctx.req, ctx.res);
     const user = session?.user;
-    let response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/orders`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ user: user!.email }),
-    });
-    let data = await response.json();
+    let data = await fetchOrders(user);
 
     return { props: { orders: data.orders } };
   },
