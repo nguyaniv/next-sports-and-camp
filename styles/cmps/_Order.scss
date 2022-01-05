@@ -1,4 +1,14 @@
 .orders {
+  h1 {
+    margin-top: 10rem;
+  }
+  .container {
+    margin: 5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
   &__item__details {
     overflow: hidden;
     height: 0;

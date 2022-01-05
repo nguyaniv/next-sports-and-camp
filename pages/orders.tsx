@@ -8,22 +8,15 @@ const orders = ({ orders }: any) => {
   if (!orders) return <h1>no orders here</h1>;
 
   return (
-    <>
+    <div className="orders">
       <h1 style={{ textAlign: 'center' }}>Orders</h1>
-      <div
-        style={{
-          margin: '5rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-        }}
-      >
+      <div className="container">
         {orders &&
           orders.map((order: orderModel) => {
             return <Order key={order._id} order={order} />;
           })}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -47,9 +47,17 @@
       background-image: linear-gradient(to right, rgb(211, 220, 228), rgb(174, 197, 235));
       overflow: hidden;
 
+      @include respond(phone) {
+        width: 90%;
+        height: 30rem;
+      }
+
       h2 {
         font-size: 2rem;
         font-family: "Courier New", Courier, monospace;
+        @include respond(phone) {
+          font-size: 2.5rem;
+        }
       }
 
       a {

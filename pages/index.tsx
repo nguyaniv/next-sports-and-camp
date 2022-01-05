@@ -12,10 +12,14 @@ import { useAppDispatch } from '../app/hooks';
 import Footer from '../cmps/Footer/Footer';
 import PaymentModal from '../cmps/OrdersModal/PaymentModal';
 import { fetchProducts } from '../utills/fetch-requests';
+import { useUser } from '@auth0/nextjs-auth0';
+
 const Home: NextPage = ({ products }: any) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [ordersModal, setOrdersModal] = useState(false);
+  const { user, error, isLoading } = useUser();
+
   const checkStatus = async () => {
     if (router.query.status && router.query.status === 'success') {
       await removeAllItems();
@@ -41,7 +45,9 @@ const Home: NextPage = ({ products }: any) => {
         <Store products={products} />
         <Cart />
         <CheckOut />
-        {/* <PaymentModal /> */}
+        {user && ordersModal && (
+          <PaymentModal setOrdersModal={setOrdersModal} />
+        )}
       </main>
       <Footer />
     </div>
