@@ -11,6 +11,7 @@ import { removeAllItems } from '../utills/utills';
 import { useAppDispatch } from '../app/hooks';
 import Footer from '../cmps/Footer/Footer';
 import PaymentModal from '../cmps/OrdersModal/PaymentModal';
+import { fetchProducts } from '../utills/fetch-requests';
 const Home: NextPage = ({ products }: any) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -47,21 +48,16 @@ const Home: NextPage = ({ products }: any) => {
   );
 };
 
-export async function getServerSideProps() {
-  // get the current environment
-  let dev = process.env.NODE_ENV !== 'production';
-  let { DEV_URL, PROD_URL } = process.env;
+export const getStaticProps = async () => {
   // request posts from api
-  let response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/products`);
   // let response = await fetch(`http://localhost:3000/api/products`);
   // extract the data
-  let data = await response.json();
+  let data = await fetchProducts();
 
   return {
     props: {
       products: data,
     },
   };
-}
-
+};
 export default Home;

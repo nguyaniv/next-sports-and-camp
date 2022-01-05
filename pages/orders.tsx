@@ -1,7 +1,7 @@
 import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 import Order from '../cmps/Order/Order';
 import { orderModel } from '../models/order';
-import { fetchOrders } from '../utills/fetch-orders';
+import { fetchOrders } from '../utills/fetch-requests';
 const orders = ({ orders }: any) => {
   console.log(orders);
 
