@@ -12,7 +12,7 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 
   @include respond(phone) {
-    height: 60rem;
+    height: 50rem;
     padding: 1rem;
     grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(2, 1fr);

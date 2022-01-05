@@ -30,7 +30,7 @@
     }
     @include respond(phone) {
       border-bottom: none;
-      height: 12rem;
+      height: 100%;
     }
     @include respond(tab-port) {
       // height: 7rem;
@@ -200,8 +200,8 @@
       padding: 1rem;
       outline: rgb(114, 151, 119);
       border: 3px solid rgb(114, 151, 119);
-      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
-        sans-serif;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 
       @include respond(tab-port) {
         width: 70%;
@@ -245,8 +245,8 @@
       border: none;
     }
     font-size: 2rem;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
-      sans-serif;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   }
 
   &__link {

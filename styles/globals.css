@@ -119,7 +119,7 @@ a {
 @media only screen and (max-width: 37.5em) {
   .navbar__actions {
     border-bottom: none;
-    height: 12rem;
+    height: 100%;
   }
 }
 
@@ -331,7 +331,7 @@ a {
   padding: 1rem;
   outline: #729777;
   border: 3px solid #729777;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 @media only screen and (max-width: 56.25em) {
@@ -386,7 +386,7 @@ a {
           align-items: center;
   border-bottom: 1px solid #8b8b8b;
   font-size: 2rem;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 @media only screen and (max-width: 37.5em) {
@@ -1367,7 +1367,7 @@ a {
 
 @media only screen and (max-width: 37.5em) {
   .footer {
-    height: 60rem;
+    height: 50rem;
     padding: 1rem;
     -ms-grid-rows: (1fr)[5];
         grid-template-rows: repeat(5, 1fr);
