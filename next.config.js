@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  "noImplicitAny": false,
   images: {
     domains: [
       's.gravatar.com',
