@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { onChangeModal } from '../../features/cart/cartSlice';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { loadStripe } from '@stripe/stripe-js';
-import axios from 'axios';
-import { useUser } from '@auth0/nextjs-auth0';
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { onChangeModal } from "../../features/cart/cartSlice";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import { useUser } from "@auth0/nextjs-auth0";
 
 const CheckOut = () => {
   const modal = useAppSelector((state) => state.cart.checkoutModal);
@@ -24,7 +24,7 @@ const CheckOut = () => {
   const createCheckOutSession = async () => {
     setLoading(true);
     const stripe = await stripePromise;
-    const checkoutSession = await axios.post('/api/create-stripe-session', {
+    const checkoutSession = await axios.post("/api/create-stripe-session", {
       items: items,
       user: user?.email || null,
     });
@@ -42,7 +42,7 @@ const CheckOut = () => {
       onClick={() => {
         dispatch(onChangeModal());
       }}
-      className={!isModal ? 'checkout' : 'checkout__active'}
+      className={!isModal ? "checkout" : "checkout__active"}
     >
       <div
         onClick={(e) => {
@@ -65,8 +65,13 @@ const CheckOut = () => {
                   <li>{item.quantity}</li>
                   <li>${item.price * item.quantity} </li>
                   <li>
-                    {' '}
-                    <Image width={70} height={70} src={item.imgURL} />{' '}
+                    {" "}
+                    <Image
+                      width={70}
+                      height={70}
+                      src={item.imgURL}
+                      alt={item.name}
+                    />{" "}
                   </li>
                 </ul>
               );

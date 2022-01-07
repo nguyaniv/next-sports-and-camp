@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { useUser } from '@auth0/nextjs-auth0';
-import { useRef } from 'react';
+import Image from "next/image";
+import Link from "next/link";
+import { useUser } from "@auth0/nextjs-auth0";
+import { useRef } from "react";
 const Navbar = () => {
   const { user, error, isLoading } = useUser();
 
@@ -9,12 +9,12 @@ const Navbar = () => {
     <div className="navbar">
       <div className=" navbar__actions">
         <div className=" navbar__logo">
-          <Link href={'/'}>
+          <Link href={"/"}>
             <Image
               layout="responsive"
               width={50}
               height={50}
-              src={'/img/logo.png'}
+              src={"/img/logo.png"}
             />
           </Link>
         </div>
@@ -28,10 +28,11 @@ const Navbar = () => {
               <div className="navbar__user__dropdown">
                 <div className="navbar__user__dropdown__image">
                   <Image
-                    src={user.picture ?? ''}
+                    src={user.picture ?? ""}
                     width={40}
                     height={40}
                     layout="responsive"
+                    alt={user.email}
                   ></Image>
                 </div>
 
@@ -39,11 +40,11 @@ const Navbar = () => {
                 <div className="navbar__user__dropdown--menu">
                   <ul>
                     <li>
-                      {' '}
-                      <Link href={'/orders'}>Orders</Link>{' '}
+                      {" "}
+                      <Link href={"/orders"}>Orders</Link>{" "}
                     </li>
                     <li>
-                      {' '}
+                      {" "}
                       <a href="/api/auth/logout">Logout</a>
                     </li>
                   </ul>

@@ -1,13 +1,13 @@
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
-import { onChangeModal, onGetItems } from '../../features/cart/cartSlice';
-import { useAppSelector } from '../../app/hooks';
-import { getItems, removeAllItems } from '../../utills/utills';
-import { useAppDispatch } from '../../app/hooks';
-
-import CartList from './CartList';
-import { useRouter } from 'next/router';
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
+import { onChangeModal, onGetItems } from "../../features/cart/cartSlice";
+import { useAppSelector } from "../../app/hooks";
+import { getItems, removeAllItems } from "../../utills/utills";
+import { useAppDispatch } from "../../app/hooks";
+import { product } from "../Store/store-products";
+import CartList from "./CartList";
+import { useRouter } from "next/router";
 const Cart: React.FC = () => {
   const [toggle, setToggle] = useState(false);
   const items = useAppSelector((state) => state.cart.items);
@@ -25,7 +25,7 @@ const Cart: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    if (router.query.status && router.query.status === 'success') {
+    if (router.query.status && router.query.status === "success") {
       await removeAllItems();
       dispatch(onGetItems);
     }
@@ -43,14 +43,14 @@ const Cart: React.FC = () => {
     }, 500);
     await setcartItems(updatedCart);
     let length = 0;
-    updatedCart.forEach((cartItem: any) => (length += cartItem.quantity));
+    updatedCart.forEach((cartItem: product) => (length += cartItem.quantity!));
     setCartLength(length);
   };
 
   const returnTotal = () => {
     let total = 0;
-    cartItems.forEach((item: any) => {
-      total += item.quantity * item.price;
+    cartItems.forEach((item: product) => {
+      total += item.quantity! * item.price;
     });
     return total;
   };
@@ -70,7 +70,7 @@ const Cart: React.FC = () => {
   return (
     <div
       className={
-        !toggle ? `cart__disable  ${cartEffect ? 'rotate' : ''}` : 'cart'
+        !toggle ? `cart__disable  ${cartEffect ? "rotate" : ""}` : "cart"
       }
     >
       {!toggle ? (

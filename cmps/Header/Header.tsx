@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Header = () => {
   return (
@@ -16,7 +16,6 @@ const Header = () => {
           playsInline={true}
         >
           <source src="header/bg-video.mp4" type="video/mp4" />
-          {/* <source src="header/bg-video.webm" type="video/webm" /> */}
         </video>
       </div>
     </header>

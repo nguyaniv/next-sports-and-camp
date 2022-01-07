@@ -1,21 +1,21 @@
-import Product from './Product';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSortAmountUpAlt } from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect } from 'react';
-import { product } from './store-products';
+import Product from "./Product";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSortAmountUpAlt } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
+import { product } from "./store-products";
 
 const Store = ({ products }: any) => {
   const [sortPopup, setSortPopup] = useState(false);
   const [currProducts, setCurrProducts] = useState<product[]>([]);
-  const [currFillter, setCurrFilter] = useState('');
+  const [currFillter, setCurrFilter] = useState("");
 
   const onSortProducts = async (key: string) => {
     let sortedProducts: product[];
-    if (key === 'price') {
+    if (key === "price") {
       sortedProducts = await currProducts.sort((a, b) => a.price - b.price);
       setCurrProducts(sortedProducts);
     }
-    if (key === 'category') {
+    if (key === "category") {
       sortedProducts = await currProducts.sort((a, b) => {
         if (a.category > b.category) return 1;
         if (a.category < b.category) return -1;
@@ -28,9 +28,9 @@ const Store = ({ products }: any) => {
   const onFilterProducts = async (type?: string) => {
     if (!type) {
       await setCurrProducts(products.items);
-      return setCurrFilter('all');
+      return setCurrFilter("all");
     }
-    const filteredProducts = products.items.filter((item: any) => {
+    const filteredProducts = products.items.filter((item: product) => {
       return item.category === type;
     });
     setCurrProducts(filteredProducts);
@@ -39,7 +39,7 @@ const Store = ({ products }: any) => {
 
   useEffect(() => {
     setCurrProducts(products.items);
-    setCurrFilter('all');
+    setCurrFilter("all");
   }, [products]);
 
   if (!products) return <h1>no </h1>;
@@ -54,11 +54,11 @@ const Store = ({ products }: any) => {
             className="btn--sort"
           >
             <FontAwesomeIcon size="1x" icon={faSortAmountUpAlt} />
-            <div className={`speech-bubble ${sortPopup ? 'active' : ''}`}>
+            <div className={`speech-bubble ${sortPopup ? "active" : ""}`}>
               Sort by:
-              <li onClick={() => onSortProducts('price')}>Price</li>
-              <li onClick={() => onSortProducts('category')}>Catagory</li>
-              <li onClick={() => console.log('On Sale')}>On Sale</li>
+              <li onClick={() => onSortProducts("price")}>Price</li>
+              <li onClick={() => onSortProducts("category")}>Catagory</li>
+              <li onClick={() => console.log("On Sale")}>On Sale</li>
             </div>
           </button>
         </h2>
@@ -66,38 +66,38 @@ const Store = ({ products }: any) => {
           <li
             onClick={() => onFilterProducts()}
             className={
-              currFillter === 'all'
+              currFillter === "all"
                 ? `store__heading__filter--link-active`
-                : 'store__heading__filter--link'
+                : "store__heading__filter--link"
             }
           >
             All
           </li>
           <li
-            onClick={() => onFilterProducts('sport')}
+            onClick={() => onFilterProducts("sport")}
             className={
-              currFillter === 'sport'
+              currFillter === "sport"
                 ? `store__heading__filter--link-active`
-                : 'store__heading__filter--link'
+                : "store__heading__filter--link"
             }
           >
             Sports
           </li>
           <li
-            onClick={() => onFilterProducts('camping')}
+            onClick={() => onFilterProducts("camping")}
             className={
-              currFillter === 'camping'
+              currFillter === "camping"
                 ? `store__heading__filter--link-active`
-                : 'store__heading__filter--link'
+                : "store__heading__filter--link"
             }
           >
             Camping
           </li>
           <li
             className={
-              currFillter === 'hot'
+              currFillter === "hot"
                 ? `store__heading__filter--link-active`
-                : 'store__heading__filter--link'
+                : "store__heading__filter--link"
             }
           >
             Hot
@@ -107,7 +107,7 @@ const Store = ({ products }: any) => {
       <div className="store__products">
         {currProducts &&
           currProducts.length > 1 &&
-          currProducts.map((product: any) => {
+          currProducts.map((product: product) => {
             return <Product key={product.name} product={product} />;
           })}
       </div>

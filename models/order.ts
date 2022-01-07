@@ -1,6 +1,6 @@
 export interface orderModel {
   _id: string;
-  user: 'string';
+  user: string;
   items: object[];
   createdAt: string;
   price: number;

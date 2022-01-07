@@ -1,19 +1,20 @@
-import Image from 'next/image';
-import React from 'react';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { addItem, removeItem } from '../../utills/utills';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from "next/image";
+import React from "react";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { addItem, removeItem } from "../../utills/utills";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowCircleUp,
   faArrowCircleDown,
-} from '@fortawesome/free-solid-svg-icons';
-import { onGetItems } from '../../features/cart/cartSlice';
+} from "@fortawesome/free-solid-svg-icons";
+import { onGetItems } from "../../features/cart/cartSlice";
+import { product } from "../Store/store-products";
 
 interface Item {
-  item: any;
+  item: product;
 }
 
-const CartItem: React.FC<Item> = ({ item }) => {
+const CartItem: React.FC<Item> = ({ item: item }) => {
   const dispatch = useAppDispatch();
 
   return (
@@ -41,7 +42,13 @@ const CartItem: React.FC<Item> = ({ item }) => {
         </button>
       </li>
       <li className="cart__item--image">
-        <Image src={item.imgURL} width={75} height={75} layout="responsive" />
+        <Image
+          src={item.imgURL}
+          width={75}
+          height={75}
+          alt={item.name}
+          layout="responsive"
+        />
       </li>
     </div>
   );

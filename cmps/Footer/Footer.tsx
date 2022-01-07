@@ -1,12 +1,18 @@
-import Image from 'next/image';
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import Image from "next/image";
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 const Footer = () => {
   return (
     <footer id="footer" className="footer">
       <div className="footer__logo">
-        <Image layout="fixed" width={50} height={50} src={'/img/logo.png'} />
+        <Image
+          layout="fixed"
+          width={50}
+          height={50}
+          alt="logo"
+          src={"/img/logo.png"}
+        />
       </div>
       <p className="footer__logo--p">Yaniv Dev</p>
       <div className="footer__email">

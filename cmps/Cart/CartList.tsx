@@ -1,7 +1,7 @@
-import React from 'react';
-import { product } from '../Store/store-products';
-import CartEmpty from './CartEmpty';
-import CartItem from './CartItem';
+import React from "react";
+import { product } from "../Store/store-products";
+import CartEmpty from "./CartEmpty";
+import CartItem from "./CartItem";
 
 interface CartList {
   onToggle: any;
@@ -28,13 +28,6 @@ const CartList: React.FC<CartList> = ({ onToggle, cartItems }) => {
             cartItems.map((item: product) => {
               return <CartItem key={item.name} item={item} />;
             })}
-          {/* <div className="cart__total">total: ${returnTotal()}</div>
-          <button
-            onClick={() => dispatch(onChangeModal())}
-            className="cart__btn--finish"
-          >
-            Procces to checkout
-          </button> */}
         </div>
       )}
     </>
