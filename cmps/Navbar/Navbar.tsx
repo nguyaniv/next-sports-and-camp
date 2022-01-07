@@ -9,20 +9,23 @@ const Navbar = () => {
     <div className="navbar">
       <div className=" navbar__actions">
         <div className=" navbar__logo">
-          <Link href={"/"}>
-            <Image
-              layout="responsive"
-              width={50}
-              height={50}
-              src={"/img/logo.png"}
-            />
+          <Link passHref href={"/"}>
+            <a>
+              <Image
+                layout="responsive"
+                width={50}
+                height={50}
+                src={"/img/logo.png"}
+                alt="logo"
+              />
+            </a>
           </Link>
         </div>
         <div className=" navbar__user">
           {!user ? (
-            <a className="navbar__user__login" href="/api/auth/login">
-              Login
-            </a>
+            <Link href="/api/auth/login">
+              <a className="navbar__user__login">Login</a>
+            </Link>
           ) : (
             <>
               <div className="navbar__user__dropdown">
@@ -45,7 +48,9 @@ const Navbar = () => {
                     </li>
                     <li>
                       {" "}
-                      <a href="/api/auth/logout">Logout</a>
+                      <Link href={"/api/auth/logout"}>
+                        <a>Logout</a>
+                      </Link>
                     </li>
                   </ul>
                 </div>

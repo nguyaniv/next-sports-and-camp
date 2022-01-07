@@ -15,7 +15,7 @@ const Header = () => {
           preload=""
           playsInline={true}
         >
-          <source src="header/bg-video.mp4" type="video/mp4" />
+          <source src="header/bg-video-2.mp4" type="video/mp4" />
         </video>
       </div>
     </header>

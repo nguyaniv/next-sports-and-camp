@@ -1,37 +1,44 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import Cart from '../cmps/Cart/Cart';
-import CheckOut from '../cmps/CheckOut/CheckOut';
-import Header from '../cmps/Header/Header';
-import Store from '../cmps/Store/Store';
-import { onGetItems } from '../features/cart/cartSlice';
-import { removeAllItems } from '../utills/utills';
-import { useAppDispatch } from '../app/hooks';
-import Footer from '../cmps/Footer/Footer';
-import PaymentModal from '../cmps/OrdersModal/PaymentModal';
-import { fetchProducts } from '../utills/fetch-requests';
-import { useUser } from '@auth0/nextjs-auth0';
-
+import type { NextPage } from "next";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { useCallback, useEffect, useState } from "react";
+import Cart from "../cmps/Cart/Cart";
+import CheckOut from "../cmps/CheckOut/CheckOut";
+import Header from "../cmps/Header/Header";
+import Store from "../cmps/Store/Store";
+import { onGetItems } from "../features/cart/cartSlice";
+import { removeAllItems } from "../utills/utills";
+import { useAppDispatch } from "../app/hooks";
+import Footer from "../cmps/Footer/Footer";
+import PaymentModal from "../cmps/OrdersModal/PaymentModal";
+import { fetchProducts } from "../utills/fetch-requests";
+import { useUser } from "@auth0/nextjs-auth0";
+import { products } from "../cmps/Store/store-products";
 const Home: NextPage = ({ products }: any) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [ordersModal, setOrdersModal] = useState(false);
   const { user, error, isLoading } = useUser();
 
-  const checkStatus = async () => {
-    if (router.query.status && router.query.status === 'success') {
+  // const checkStatus = async () => {
+  //   if (router.query.status && router.query.status === "success") {
+  //     await removeAllItems();
+  //     await dispatch(onGetItems);
+  //     setOrdersModal(true);
+  //   }
+  // };
+  const checkStatus = useCallback(async () => {
+    if (router.query.status && router.query.status === "success") {
       await removeAllItems();
       await dispatch(onGetItems);
       setOrdersModal(true);
     }
-  };
+  }, [router.query, dispatch]);
 
   useEffect(() => {
     checkStatus();
-    // @ts-ignore
-  }, [router.query]);
+    console.log("i run");
+  }, [checkStatus]);
 
   return (
     <div>
@@ -55,15 +62,21 @@ const Home: NextPage = ({ products }: any) => {
 };
 
 export const getStaticProps = async () => {
-  // request posts from api
-  // let response = await fetch(`http://localhost:3000/api/products`);
-  // extract the data
-  let data = await fetchProducts();
+  try {
+    let data = await fetchProducts();
+    return {
+      props: {
+        products: data,
+      },
+    };
+  } catch (error) {
+    console.log(error || "Couldnt fetch");
 
-  return {
-    props: {
-      products: data,
-    },
-  };
+    return {
+      props: {
+        products: products,
+      },
+    };
+  }
 };
 export default Home;

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { orderModel } from './../../models/order';
-
+import React, { useState } from "react";
+import { orderModel } from "./../../models/order";
+import { product } from "../Store/store-products";
 interface Order {
   order: orderModel;
 }
@@ -19,11 +19,11 @@ const Order: React.FC<Order> = ({ order }) => {
         </ul>
 
         <div className="orders__item__details--products">
-          {order.items.map((item: any) => {
+          {order.items.map((item: product) => {
             return (
-              <div>
-                {' '}
-                <span>{item.name}</span> <span>${item.price}</span>{' '}
+              <div key={item.name}>
+                {" "}
+                <span>{item.name}</span> <span>${item.price}</span>{" "}
               </div>
             );
           })}
