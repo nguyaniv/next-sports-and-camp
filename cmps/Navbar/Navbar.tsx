@@ -39,7 +39,7 @@ const Navbar = () => {
                   ></Image>
                 </div>
 
-                <span>Hello {user.nickname}</span>
+                <span>Hello {user && user.nickname}</span>
                 <div className="navbar__user__dropdown--menu">
                   <ul>
                     <li>

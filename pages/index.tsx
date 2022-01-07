@@ -20,13 +20,6 @@ const Home: NextPage = ({ products }: any) => {
   const [ordersModal, setOrdersModal] = useState(false);
   const { user, error, isLoading } = useUser();
 
-  // const checkStatus = async () => {
-  //   if (router.query.status && router.query.status === "success") {
-  //     await removeAllItems();
-  //     await dispatch(onGetItems);
-  //     setOrdersModal(true);
-  //   }
-  // };
   const checkStatus = useCallback(async () => {
     if (router.query.status && router.query.status === "success") {
       await removeAllItems();
