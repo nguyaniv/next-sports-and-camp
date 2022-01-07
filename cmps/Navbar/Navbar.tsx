@@ -32,7 +32,7 @@ const Navbar = () => {
                     width={40}
                     height={40}
                     layout="responsive"
-                    alt={user.email}
+                    alt="name"
                   ></Image>
                 </div>
 
